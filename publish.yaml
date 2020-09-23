@@ -1,0 +1,28 @@
+Type: Component
+Name: apigateway
+Provider:
+  - Tencent
+Version: 0.0.2
+Description: 腾讯云API网关组件，可以快速部署腾讯云网关
+HomePage: https://www.aliyun.com/
+Tags:
+  - 函数计算
+Category: 基础云服务
+Commands:
+  deploy: 部署网关
+  remove: 移除网关
+Service:
+  API网关:
+    Authorities:
+      - 创建服务
+      - 创建API
+      - 修改服务
+      - 修改API
+      - 删除服务
+      - 删除API
+Properties:
+  Region:
+    Description: 地域
+    Required: true
+    Type:
+      - String
