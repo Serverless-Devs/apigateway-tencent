@@ -156,7 +156,7 @@ MyAPIGateway:
 | NetTypes     |   false    | <String>List |  `['OUTER']`   | 网络类型列表，用于指定支持的访问类型，INNER 为内网访问，OUTER 为外网访问。             |
 | Description  |   false    |  String  |                | 用户自定义的服务描述说明                                                               |
 | Environment  |   false    |  String  |                | 服务要发布的环境的名称，支持三种环境: test（测试）、prepub（预发布）、 release（发布） |
-| Domains |   false    | <Struct>List |      `[]`      | 自定义 API 域名，配置参数参考customDomain 参数说明  |
+| Domains |   false    | <Struct>List |      `[]`      | 自定义 API 域名，配置参数参考customDomain   |
 
 ##### Domains
 
@@ -165,7 +165,7 @@ MyAPIGateway:
 | Domain           |   true    | String |        | 需要绑定的自定义域名                                                                                                     |
 | CertificateId    |   false    | String |        | 自定义域名的证书，如果设置为 https，则为必需。                                                                           |
 | IsDefaultMapping |   false    | Boolean | `true` | 是否使用默认路径映射。 如果要自定义路径映射，请设为`false`                                                               |
-| PathMappingSet   |   false    | Struct | `[]`  | 自定义路径映射, 当 `isDefaultMapping` 为 `false` 时必填，配置参数参考pathMappingSet 参数说明 |
+| PathMappingSet   |   false    | Struct | `[]`  | 自定义路径映射, 当 `isDefaultMapping` 为 `false` 时必填，配置参数参考pathMappingSet  |
 | Protocols        |   false    | <String>List |      | 绑定自定义域协议类型，例如 HTTP，HTTPS，HTTP 和 HTTPS，默认与前端协议相同                                                |
 
 ###### PathMappingSet
@@ -188,13 +188,13 @@ MyAPIGateway:
 | ServiceType              |   false    | String | `SCF`  | 指定的后端类型，默认为 `SCF`，如要创建 mock 或 http 的类型，可设为 `MOCK`或`HTTP`    |
 | Description              |   false    |  String |       | API 描述                                                                             |
 | EnableCORS               |   false    | Boolean | `false` | 是否启用跨域访问。 true：启用， false：不启用                                        |
-| Function                 |   必填    |  Struct |       | 对应的 Serverless 云函数，配置参数参考function 参数说明        |
-| UsagePlan                |   false    |  Struct |        | 基于 API 维度的使用计划，配置参数参考usagePlan 参数说明     |
-| Auth                     |   false    |  Struct  |     | API 鉴权设置，配置参数参考auth 参数说明                  |
+| Function                 |   false    |  Struct |       | 对应的 Serverless 云函数，配置参数参考function         |
+| UsagePlan                |   false    |  Struct |        | 基于 API 维度的使用计划，配置参数参考usagePlan      |
+| Auth                     |   false    |  Struct  |     | API 鉴权设置，配置参数参考auth                   |
 | ServiceTimeout           |   false    |  Number |       | API 的后端服务超时时间，单位为秒                                                     |
 | ResponseType             |   false    |   String      | 返回类型: HTML、JSON、TEST、BINARY、XML                                              |
-| Parameters                    |   false    |  <Struct>List |       | 前端请求参数，配置参数参考param 参数说明                    |
-| ServiceConfig            |   false    |   Struct |      | API 的后端服务配置，配置参数参考serviceConfig 参数说明    |
+| Parameters                    |   false    |  <Struct>List |       | 前端请求参数，配置参数参考param                     |
+| ServiceConfig            |   false    |   Struct |      | API 的后端服务配置，配置参数参考serviceConfig     |
 | ServiceMockReturnMessage |   false    |    String |     | Mock 接口类型返回结果，如果 `serviceType` 设置为 `MOCK`，此参数必填                  |
 
 ##### Function

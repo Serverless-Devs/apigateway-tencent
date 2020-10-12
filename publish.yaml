@@ -2,9 +2,9 @@ Type: Component
 Name: apigateway
 Provider:
   - Tencent
-Version: 0.0.2
+Version: 0.0.3
 Description: 腾讯云API网关组件，可以快速部署腾讯云网关
-HomePage: https://www.aliyun.com/
+HomePage: https://www.qcloud.com/
 Tags:
   - 函数计算
 Category: 基础云服务
@@ -26,3 +26,270 @@ Properties:
     Required: true
     Type:
       - String
+  Service:
+    Description: API网关服务
+    Required: true
+    Type:
+      - Struct:
+          Id:
+            Description: 服务的全局唯一 ID，由系统生成
+            Required: false
+            Type:
+              - String
+          Name:
+            Description: 用户自定义的服务名称。 如果该参数未传递，则由系统自动生成一个唯一名称
+            Required: false
+            Type:
+              - String
+          Protocols:
+            Description: 服务的前端请求类型，例如 HTTP，HTTPS，HTTP 和 HTTPS。
+            Required: true
+            Type:
+              - Enum:
+                  - http
+                  - https
+          Description:
+            Description: 用户自定义的服务描述说明
+            Required: false
+            Type:
+              - String
+          Environment:
+            Description:  服务要发布的环境的名称，支持三种环境, test（测试）、prepub（预发布）、 release（发布）
+            Required: false
+            Type:
+              - String
+          NetTypes:
+            Description: 网络类型列表，用于指定支持的访问类型，INNER 为内网访问，OUTER 为外网访问。
+            Required: false
+            Type:
+              - <String>List
+          Domains:
+            Description: 自定义 API 域名，配置参数参考customDomain
+            Required: false
+            Type:
+              - <Struct>List:
+                  Domain:
+                    Description: 需要绑定的自定义域名
+                    Required: true
+                    Type:
+                      - String
+                  CertificateId:
+                    Description: 自定义域名的证书，如果设置为 https，则为必需。
+                    Required: false
+                    Type:
+                      - String
+                  IsDefaultMapping:
+                    Description: 是否使用默认路径映射。 如果要自定义路径映射，请设为`false`
+                    Required: false
+                    Type:
+                      - String
+                  PathMappingSet:
+                    Description: 自定义路径映射, 当 `isDefaultMapping` 为 `false` 时必填，配置参数参考pathMappingSet
+                    Required: false
+                    Type:
+                      - <Struct>List:
+                          Path:
+                            Description: 自定义映射路径
+                            Required: false
+                            Type:
+                              - String
+                          Environment:
+                            Description: 自定义映射环境
+                            Required: false
+                            Type:
+                              - String
+                  Protocols:
+                    Description: 绑定自定义域协议类型，例如 HTTP，HTTPS，HTTP 和 HTTPS，默认与前端协议相同
+                    Required: false
+                    Type:
+                      - String
+  API:
+    Description: API详细信息
+    Required: false
+    Type:
+      - <Struct>List:
+          Path:
+            Description: API 路径
+            Required: false
+            Type:
+              - String
+          Method:
+            Description: 请求方法
+            Required: false
+            Type:
+              - String
+          Protocol:
+            Description: 指定的前端 API 类型， 默认为`HTTP`，如要创建 websocket 类型的 API，请设为`WEBSOCKET`
+            Required: false
+            Type:
+              - String
+          Function:
+            Description: 对应的 Serverless 云函数，配置参数参考function
+            Required: false
+            Type:
+              - Struct:
+                  TransportFunctionName:
+                    Description:  API 的后端服务的传输函数的名称，当前端类型为`WEBSOCKET`时生效且为必填
+                    Required: false
+                    Type:
+                      - String
+                  RegisterFunctionName:
+                    Description: API 的后端服务的注册函数的名称，当前端类型为`WEBSOCKET`时生效
+                    Required: false
+                    Type:
+                      - String
+                  CleanupFunctionName:
+                    Description: API 的后端服务的清理函数的名称，当前端类型为`WEBSOCKET`时生效
+                    Required: false
+                    Type:
+                      - String
+                  IsIntegratedResponse:
+                    Description: 是否开启响应集成，当前端类型为`HTTP`时生效
+                    Required: false
+                    Type:
+                      - String
+                  FunctionQualifier:
+                    Description: scf 函数版本
+                    Required: false
+                    Type:
+                      - String
+                  FunctionName:
+                    Description: PI 的后端服务的 SCF 函数的名称，当前端类型为`HTTP`时生效且为必填
+                    Required: false
+                    Type:
+                      - String
+          Name:
+            Description: API名称
+            Required: false
+            Type:
+              - String
+          ServiceType:
+            Description: 指定的后端类型，默认为 `SCF`，如要创建 mock 或 http 的类型，可设为 `MOCK`或`HTTP`
+            Required: false
+            Type:
+              - String
+          ServiceConfig:
+            Description: 地域
+            Required: false
+            Type:
+              - Struct:
+                  Url:
+                    Description: API 的后端服务 url
+                    Required: false
+                    Type:
+                      - String
+                  Path:
+                    Description: API 的后端服务路径
+                    Required: false
+                    Type:
+                      - String
+                  Method:
+                    Description: API 的后端服务请求方法
+                    Required: false
+                    Type:
+                      - String
+          Id:
+            Description: API 的唯一 ID
+            Required: false
+            Type:
+              - String
+          Description:
+            Description: API 描述
+            Required: false
+            Type:
+              - String
+          EnableCORS:
+            Description: 是否启用跨域访问。 true：启用， false：不启用
+            Required: false
+            Type:
+              - String
+          ResponseType:
+            Description:  返回类型，HTML、JSON、TEST、BINARY、XML
+            Required: false
+            Type:
+              - String
+          ServiceTimeout:
+            Description: API 的后端服务超时时间，单位为秒
+            Required: false
+            Type:
+              - String
+          Parameters:
+            Description: 前端请求参数，配置参数参考param
+            Required: false
+            Type:
+              - <Struct>List:
+                  Name:
+                    Description: 请求参数名称
+                    Required: false
+                    Type:
+                      - String
+                  Position:
+                    Description: 参数位置，仅支持`PATH`，`QUERY`和`HEADER`类型
+                    Required: false
+                    Type:
+                      - String
+                  Required:
+                    Description: 参数是否必填， true， false
+                    Required: false
+                    Type:
+                      - String
+                  Type:
+                    Description: 参数类型，如 String 和 int.
+                    Required: false
+                    Type:
+                      - String
+                  DefaultValue:
+                    Description: 参数默认值
+                    Required: false
+                    Type:
+                      - String
+                  Description:
+                    Description: 参数备注/描述
+                    Required: false
+                    Type:
+                      - String
+          UsagePlan:
+            Description: 基于 API 维度的使用计划，配置参数参考usagePlan
+            Required: false
+            Type:
+              - Struct:
+                  UsagePlanId:
+                    Description: 用户自定义的基于 API 的使用计划 ID
+                    Required: false
+                    Type:
+                      - String
+                  UsagePlanName:
+                    Description: 用户自定义的基于 API 的使用计划名称
+                    Required: false
+                    Type:
+                      - String
+                  UsagePlanDesc:
+                    Description: 用户自定义的基于 API 的使用计划描述
+                    Required: false
+                    Type:
+                      - String
+                  MaxRequestNum:
+                    Description: 允许的请求总数。不传该参数时默认为 1000 次，若其保留为空，则默认情况下将使用-1，表示已禁用
+                    Required: false
+                    Type:
+                      - String
+          Auth:
+            Description: API 鉴权设置，配置参数参考auth
+            Required: false
+            Type:
+              - Struct:
+                  SecretName:
+                    Description: 用户自定义的密钥名称
+                    Required: false
+                    Type:
+                      - String
+                  SecretIds:
+                    Description: 用户自定义的 secretID。当类型为手动时需要。 它可以包含 5 到 50 个字母，数字和下划线。
+                    Required: false
+                    Type:
+                      - <String>List
+          ServiceMockReturnMessage:
+            Description: Mock 接口类型返回结果，如果 `serviceType` 设置为 `MOCK`，此参数必填
+            Required: false
+            Type:
+              - String
