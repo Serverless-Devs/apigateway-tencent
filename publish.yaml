@@ -2,9 +2,9 @@ Type: Component
 Name: apigateway
 Provider:
   - Tencent
-Version: 0.0.3
+Version: 0.0.2
 Description: 腾讯云API网关组件，可以快速部署腾讯云网关
-HomePage: https://www.qcloud.com/
+HomePage: https://www.aliyun.com/
 Tags:
   - 函数计算
 Category: 基础云服务
