@@ -1,4 +1,4 @@
-const { Component } = require('/Users/jiangyu/Desktop/core')
+const { Component } = require('@serverless-devs/s-core')
 const { Apigw } = require('tencent-component-toolkit')
 const { TypeError } = require('tencent-component-toolkit/src/utils/error')
 const CONFIGS = require('./config')
