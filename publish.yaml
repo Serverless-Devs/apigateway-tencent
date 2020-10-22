@@ -2,7 +2,7 @@ Type: Component
 Name: apigateway
 Provider:
   - Tencent
-Version: 0.0.5
+Version: 0.0.7
 Description: 腾讯云API网关组件，可以快速部署腾讯云网关
 HomePage: https://www.aliyun.com/
 Tags:
@@ -62,12 +62,12 @@ Properties:
             Description: 网络类型列表，用于指定支持的访问类型，INNER 为内网访问，OUTER 为外网访问。
             Required: false
             Type:
-              - <String>List
+              - List<String>
           Domains:
             Description: 自定义 API 域名，配置参数参考customDomain
             Required: false
             Type:
-              - <Struct>List:
+              - List<Struct>:
                   Domain:
                     Description: 需要绑定的自定义域名
                     Required: true
@@ -87,7 +87,7 @@ Properties:
                     Description: 自定义路径映射, 当 `isDefaultMapping` 为 `false` 时必填，配置参数参考pathMappingSet
                     Required: false
                     Type:
-                      - <Struct>List:
+                      - List<Struct>:
                           Path:
                             Description: 自定义映射路径
                             Required: false
@@ -107,7 +107,7 @@ Properties:
     Description: API详细信息
     Required: false
     Type:
-      - <Struct>List:
+      - List<Struct>:
           Path:
             Description: API 路径
             Required: false
@@ -217,7 +217,7 @@ Properties:
             Description: 前端请求参数，配置参数参考param
             Required: false
             Type:
-              - <Struct>List:
+              - List<Struct>:
                   Name:
                     Description: 请求参数名称
                     Required: false
@@ -287,7 +287,7 @@ Properties:
                     Description: 用户自定义的 secretID。当类型为手动时需要。 它可以包含 5 到 50 个字母，数字和下划线。
                     Required: false
                     Type:
-                      - <String>List
+                      - List<String>
           ServiceMockReturnMessage:
             Description: Mock 接口类型返回结果，如果 `serviceType` 设置为 `MOCK`，此参数必填
             Required: false
