@@ -80,6 +80,9 @@ class APIGatewayComponent extends Component {
 
   async deploy(inputs) {
 
+    // 获取密钥信息
+    inputs.Credentials = await this.credentials(inputs)
+
     console.log(this.args(inputs.Args))
 
     console.log(`Deploying API Gateway...`)
@@ -171,6 +174,10 @@ class APIGatewayComponent extends Component {
   }
 
   async remove(inputs) {
+
+    // 获取密钥信息
+    inputs.Credentials = await this.credentials(inputs)
+
     console.log(`Removing API Gateway...`)
 
     // get tencent cloud credentials
