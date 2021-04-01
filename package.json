@@ -1,6 +1,6 @@
 {
   "name": "@serverless-devs/apigateway-tencent",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Serverless Devs Tool APIGateway Component For Tencent Cloud",
   "keywords": [
     "Serverless",
@@ -9,11 +9,15 @@
     "Serverless-Tool",
     "Apigateway"
   ],
+  "main": "./src/index.js",
   "homepage": "https://www.serverless-devs.com",
   "author": "Serverless-Devs",
   "contributors": [
     "Anycodes"
   ],
+  "scripts": {
+    "publish": "npm install --production"
+  },
   "license": "MIT",
   "publishConfig": {
     "access": "public"
